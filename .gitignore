@@ -1,0 +1,8 @@
+.env
+client_secret*
+.venv/
+*.pyc
+*.csv
+logs/
+RawData/
+ProcessedData/

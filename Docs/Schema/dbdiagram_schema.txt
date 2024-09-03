@@ -1,0 +1,38 @@
+
+Table "channels_dim" {
+  "channel_id" VARCHAR(24) [pk]
+  "channel_name" NVARCHAR(255)
+  "channel_description" NVARCHAR(255)
+  "extracted_datetime" DATETIME2
+}
+
+Table "channels_fact" {
+  "channel_id" VARCHAR(24) [pk]
+  "views" integer
+  "videos" integer
+  "subscribers" integer
+  "extracted_datetime" DATETIME2
+}
+
+Table "videos_dim" {
+  "video_id" VARCHAR(11) [pk]
+  "channel_id" VARCHAR(24)
+  "video_title" NVARCHAR(MAX)
+  "video_description" NVARCHAR(MAX)
+  "published_at" DATETIME
+  "video_duration" integer
+}
+
+Table "videos_fact" {
+  "video_id" VARCHAR(11) [pk]
+  "views" integer
+  "likes" integer
+  "comments" integer
+  "extracted_datetime" DATETIME2
+}
+
+Ref:"channels_dim"."channel_id" < "channels_fact"."channel_id"
+
+Ref:"channels_dim"."channel_id" < "videos_dim"."channel_id"
+
+Ref:"videos_dim"."video_id" < "videos_fact"."video_id"
