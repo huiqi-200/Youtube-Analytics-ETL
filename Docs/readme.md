@@ -63,6 +63,11 @@ s3_bucket_name =
 
 
 ## Set up Airflow Orchestrator (WIP)
+
+### Pre configuration steps:
+1. Under extra_hosts: in docker-compose.yml, go to ipconfig and put your internal ip address
+
+### Initialization steps:
 1. Run <code>docker compose up -d</code>  
 This will be the expected cotainers running:  
 ![dockerContainers](dockerContainers.png)  
